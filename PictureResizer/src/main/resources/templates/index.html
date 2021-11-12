@@ -16,11 +16,31 @@
 <title>Insert title here</title>
 </head>
 <body>
+<div class="container">
 <form action="#" th:action="@{/processFile}" method="POST" enctype="multipart/form-data">
+<div>
+<br>
 	<input type="file" name="file">
-	<input type="text" name="width">
-	<input type="text" name="height">
+	</div>
+	<br>
+	<label class="form-check-label" for="percent">How many percent?</label>
+	<br>
+	<input type="text" name="percent" value="0">
+	<br>
+	<br>
+	<span>In which direction?</span>
+	<div class="form-check">
+	<input class="form-check-input" type="radio" id="Vertical" name="radioName" value ="Vertical" checked >
+	<label class="form-check-label" for="vertical">Vertical</label>
+	</div>
+	
+	<div class="form-check">
+	<input  class="form-check-input" type="radio" id="horizontal" name="radioName" value ="horizontal">
+	<label class="form-check-label" for="horizontal">Horizontal</label>
+	</div>
+	<br>
 	<button type="submit">Submit</button>
 </form>
+</div>
 </body>
 </html>

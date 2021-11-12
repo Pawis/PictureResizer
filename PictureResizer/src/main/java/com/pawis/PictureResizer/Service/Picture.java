@@ -94,13 +94,12 @@ public final class Picture implements ActionListener {
         // set to TYPE_INT_ARGB here and in next constructor to support transparency
     }
 
-    public Picture(BufferedImage image ,String filename) {
+    public Picture(BufferedImage image) {
     	if (image.getWidth()  <= 0) throw new IllegalArgumentException("width must be positive");
         if (image.getHeight() <= 0) throw new IllegalArgumentException("height must be positive");
         this.image = image;
         this.width = image.getWidth();
         this.height = image.getHeight();
-        this.filename = filename;
     }
    /**
      * Creates a new picture that is a deep copy of the argument picture.
@@ -120,8 +119,13 @@ public final class Picture implements ActionListener {
             for (int row = 0; row < height(); row++)
                 image.setRGB(col, row, picture.image.getRGB(col, row));
     }
+    
 
-   /**
+   public BufferedImage getImage() {
+	return image;
+}
+
+/**
      * Creates a picture by reading an image from a file or URL.
      *
      * @param  name the name of the file (.png, .gif, or .jpg) or URL.

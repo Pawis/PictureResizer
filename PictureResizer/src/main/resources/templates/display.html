@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Insert title here</title>
+</head>
+<body>
+<div style="text-align:center; width:100%">
+<span >New Picture</span>
+<img th:src="${'data:image/jpeg;charset=utf-8;base64,' + file}" alt="">
+<img th:src="${'data:image/jpeg;charset=utf-8;base64,' + ogFile}" alt="">
+<!--  <img th:src="${'data:image/jpeg;charset=utf-8;base64,' + overlaid}" alt=""> -->
+<span >Old Picture</span>
+</div>
+</body>
+</html>
