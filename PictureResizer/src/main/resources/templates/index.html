@@ -20,7 +20,8 @@
 <form action="#" th:action="@{/processFile}" method="POST" enctype="multipart/form-data">
 <div>
 <br>
-	<input type="file" name="file">
+
+	<input type="file" name="file" >
 	</div>
 	<br>
 	<label class="form-check-label" for="percent">How many percent?</label>
@@ -35,11 +36,16 @@
 	</div>
 	
 	<div class="form-check">
-	<input  class="form-check-input" type="radio" id="horizontal" name="radioName" value ="horizontal">
+	<input  class="form-check-input" type="radio" id="horizontal" name="radioName" value ="Horizontal">
 	<label class="form-check-label" for="horizontal">Horizontal</label>
 	</div>
+	<div class="form-check">
+	<input  class="form-check-input" type="radio" id="Both" name="radioName" value ="Both">
+	<label class="form-check-label" for="horizontal">Both</label>
+	</div>
 	<br>
-	<button type="submit">Submit</button>
+	<button type="submit" class="btn btn-primary">Submit</button>
+	
 </form>
 </div>
 </body>

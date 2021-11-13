@@ -9,7 +9,7 @@ public interface FileService {
 	
 	public List<byte[]> processPicture(MultipartFile file, int weight, int height);
 	
-	public byte[] reduceVerticalSize(MultipartFile file, double width, boolean axis);
+	public byte[] reduceSize(MultipartFile file, double width, String axis);
 	
 
 }

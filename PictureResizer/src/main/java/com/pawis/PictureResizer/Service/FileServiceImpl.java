@@ -3,12 +3,16 @@ package com.pawis.PictureResizer.Service;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.imageio.ImageIO;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -67,26 +71,37 @@ public class FileServiceImpl implements FileService {
 		return pictures;
 	}
 
-	public byte[] reduceVerticalSize(MultipartFile file, double percent, boolean vertical) {
+	public byte[] reduceSize(MultipartFile file, double percent, String direction) {
 
 		Picture pic = new Picture(convertFileToBufferedImage(file));
 		SeamCarver sc = new SeamCarver(pic);
-
-		int percentage = (int) (pic.width() * (percent / 100));
-		System.out.println(percentage);
-		int[] seam = null;
-		
-		if (vertical)
+		int percentage = 0;
+		System.out.println(direction);
+		if (direction.equals("Horizontal")) {
+			percentage = (int) (pic.width() * (percent / 100));
 			for (int i = 0; i < percentage; i++) {
-				seam = sc.findVerticalSeam();
-				sc.removeVerticalSeam(seam);
-			}
-		else {
-			for (int i = 0; i < percentage; i++) {
-				seam = sc.findHorizontalSeam();
-				sc.removeHorizontalSeam(seam);
+				sc.removeVerticalSeam(sc.findVerticalSeam());
 			}
 		}
+		if (direction.equals("Vertical")) {
+			percentage = (int) (pic.height() * (percent / 100));
+			for (int i = 0; i < percentage; i++) {
+				sc.removeHorizontalSeam(sc.findHorizontalSeam());
+			}
+		} else {
+			percentage = (int) (pic.height() * (percent / 100));
+			for (int i = 0; i < percentage; i++) {
+				sc.removeHorizontalSeam(sc.findHorizontalSeam());
+			}
+			percentage = (int) (pic.width() * (percent / 100));
+			for (int i = 0; i < percentage; i++) {
+				sc.removeVerticalSeam(sc.findVerticalSeam());
+			}
+		
+		}
+		File newPic = new File("src/main/resources/Files/" + file.getOriginalFilename());
+		sc.picture().save(newPic);
+	
 
 		byte[] bytes = null;
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();

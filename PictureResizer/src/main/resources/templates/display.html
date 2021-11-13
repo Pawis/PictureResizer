@@ -2,15 +2,29 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<title>Insert title here</title>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+	crossorigin="anonymous">
 </head>
 <body>
-<div style="text-align:center; width:100%">
-<span >New Picture</span>
-<img th:src="${'data:image/jpeg;charset=utf-8;base64,' + file}" alt="">
-<img th:src="${'data:image/jpeg;charset=utf-8;base64,' + ogFile}" alt="">
+<div style="text-align:center; width:100%" >
+<b>New Picture</b>
+<img th:src="${'data:image/jpeg;charset=utf-8;base64,' + file}"  alt="">
+<img th:src="${'data:image/jpeg;charset=utf-8;base64,' + ogFile}"   alt="">
 <!--  <img th:src="${'data:image/jpeg;charset=utf-8;base64,' + overlaid}" alt=""> -->
-<span >Old Picture</span>
+<b>Old Picture</b>
+<br>
+<br>
+<a th:href="@{/}" class="btn btn-danger col-2 ">Back</a>
+<a th:href="@{'/downloadNewPic/' + ${fileName}}"class="btn btn-info col-2">Download</a>
+</form>
 </div>
 </body>
 </html>
