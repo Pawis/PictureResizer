@@ -14,33 +14,39 @@
 	crossorigin="anonymous">
 
 <title>Insert title here</title>
+<style>
+.error{
+color: red;}
+</style>
 </head>
 <body>
 <div class="container">
-<form action="#" th:action="@{/processFile}" method="POST" enctype="multipart/form-data">
+<form action="#" th:action="@{/processFile}" method="POST" th:object="${percentField}" enctype="multipart/form-data">
 <div>
 <br>
-
-	<input type="file" name="file" >
+	<input type="file" th:field="*{picture}" name="file" >
+	<p th:if="${#fields.hasErrors('picture')}" th:errorclass="error" th:errors="*{picture}"/>
+	<p th:text="${error}"  style="color:red">
 	</div>
 	<br>
 	<label class="form-check-label" for="percent">How many percent?</label>
 	<br>
-	<input type="text" name="percent" value="0">
+	<p th:if="${#fields.hasErrors('percent')}" th:errorclass="error" th:errors="*{percent}"/>
+	<input type="text" name="percent" th:field="*{percent}" value="0">
 	<br>
 	<br>
 	<span>In which direction?</span>
 	<div class="form-check">
-	<input class="form-check-input" type="radio" id="Vertical" name="radioName" value ="Vertical" checked >
+	<input class="form-check-input" type="radio" placeholder="0" id="Vertical" name="radioName" value ="Vertical"  th:field="*{direction}" checked >
 	<label class="form-check-label" for="vertical">Vertical</label>
 	</div>
 	
 	<div class="form-check">
-	<input  class="form-check-input" type="radio" id="horizontal" name="radioName" value ="Horizontal">
+	<input  class="form-check-input" type="radio" id="horizontal" name="radioName" value ="Horizontal" th:field="*{direction}">
 	<label class="form-check-label" for="horizontal">Horizontal</label>
 	</div>
 	<div class="form-check">
-	<input  class="form-check-input" type="radio" id="Both" name="radioName" value ="Both">
+	<input  class="form-check-input" type="radio" id="Both" name="radioName" value ="Both" th:field="*{direction}">
 	<label class="form-check-label" for="horizontal">Both</label>
 	</div>
 	<br>
