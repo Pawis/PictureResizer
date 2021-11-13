@@ -3,16 +3,12 @@ package com.pawis.PictureResizer.Service;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.imageio.ImageIO;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -99,8 +95,8 @@ public class FileServiceImpl implements FileService {
 			}
 		
 		}
-		File newPic = new File("src/main/resources/Files/" + file.getOriginalFilename());
-		sc.picture().save(newPic);
+		//File newPic = new File("src/main/resources/Files/" + file.getOriginalFilename());
+		//sc.picture().save(newPic);
 	
 
 		byte[] bytes = null;
