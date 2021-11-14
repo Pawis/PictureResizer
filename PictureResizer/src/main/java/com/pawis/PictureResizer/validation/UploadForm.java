@@ -17,8 +17,8 @@ public class UploadForm {
 	private MultipartFile picture = null;
 	
 	@NotNull(message= "numericField: positive number value is required")
-	@Max(value = 99, message = "Cant be more than 99")
-	@Min(value =0, message = "Cant be negative number")
+	@Max(value = 99, message = "Cannot be greater than 99")
+	@Min(value =0, message = "Cannot be negative number")
 	@Pattern(regexp="^(0|[1-9][0-9]*)$", message="Must be a number")
 	private String percent;
 	
